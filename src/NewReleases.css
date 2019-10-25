@@ -1,0 +1,18 @@
+/* .albums-grid {
+    display: grid;
+    grid-template-rows: auto 1fr 1fr 1fr auto;
+} */
+
+.grid-slide img {
+  float: left;
+  width: 33%;
+  padding: 1px;
+}
+
+.new-releases-container {
+    width: 50%;
+}
+
+.new-releases-container img {
+  width:200px;
+}
