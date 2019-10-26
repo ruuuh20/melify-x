@@ -11,8 +11,26 @@
 
 .new-releases-container {
     width: 50%;
+    float: left;
 }
 
 .new-releases-container img {
   width:200px;
+}
+
+.slick-next, .slick-prev {
+    background: #4682B4
+}
+
+.slick-next:focus, .slick-next:hover, .slick-prev:focus, .slick-prev:hover {
+    background: #191970
+}
+.albums-grid {
+    text-align: center;
+}
+
+.promotion-container {
+    width: 35%;
+    float: left;   /* flex doesn't seem to work well with slick slider */
+    border: 2px solid #000000;
 }

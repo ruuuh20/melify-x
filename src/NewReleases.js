@@ -53,22 +53,56 @@ class NewReleases extends Component {
 
     render() {
 
+        const albums = this.state.albums;
+        console.log(albums[1]);
+        let renderInfo;
+
+        if (this.state.albums[1]) {
+            renderInfo = (
+                <div>
+                <p>New {this.state.albums[1].album_type}</p>
+                <h3>{this.state.albums[1].name}</h3>
+                <h3>{this.state.albums[1].artists.map(n => n.name )}</h3>
+                </div>
+            )
+        } else {
+            renderInfo = 'no'
+        }
+
         return (
-            <div className="new-releases-container">
-                <NewSlider>      {this.state.albums.map(a => (
-                    <div className="albums-grid">
-                        <img src={a.images[1].url}></img>
+            <div className="first-row">
 
-                        <span>{a.name}</span>
+                <div className="new-releases-container">
+                    <NewSlider>      {this.state.albums.map(a => (
+                        <div className="albums-grid">
+                            <img src={a.images[1].url}></img>
+
+                            <span>{a.name}</span>
 
 
-                    </div>
-                )
-                )}</NewSlider>
-                
+                        </div>
+                    )
+                    )}
+                    </NewSlider>
+                </div>
+                <div className="promotion-container">
+                <div className="image-top">
+                        {this.state.albums[1] ? <img src={this.state.albums[1].images[1].url}></img> : 'no' }
+                    
+                </div>
+                <div className="content-bottom">
+                        {renderInfo}
+                 
+                    
+                    
+                </div>
+            </div>
+              
+
             </div>
         );
     }
 }
 
 export default NewReleases;
+
