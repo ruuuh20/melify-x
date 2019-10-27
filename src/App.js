@@ -7,6 +7,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import NewSlider from './NewSlider';
 import NewReleases from "./NewReleases";
+import Featured from './Featured';
+import Chart from './Chart'
 
 class App extends Component {
   constructor() {
@@ -22,7 +24,8 @@ class App extends Component {
         duration_ms:0,
       },
       is_playing: "Paused",
-      progress_ms: 0
+      progress_ms: 0,
+      featured: []
     };
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
   }
@@ -57,20 +60,35 @@ class App extends Component {
   //     }
   //   });
   // }
+  // getCurrentlyPlaying(token) {
+  //   fetch("https://api.spotify.com/v1/me/player", {
+  //     headers: {
+  //       'Authorization': 'Bearer ' + token
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     this.setState({
+  //       item: data.item,
+  //         is_playing: data.is_playing,
+  //         progress_ms: data.progress_ms,
+  //     })
+  //   })
+  // }
+
   getCurrentlyPlaying(token) {
-    fetch("https://api.spotify.com/v1/me/player", {
-      headers: {
-        'Authorization': 'Bearer ' + token
-      }
+  fetch("https://api.spotify.com/v1/browse/featured-playlists?limit=6", {
+    headers: {
+      'authorization': 'Bearer ' + token
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.playlists.items)
+    this.setState({
+      featured: data.playlists.items
     })
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        item: data.item,
-          is_playing: data.is_playing,
-          progress_ms: data.progress_ms,
-      })
-    })
+  })
   }
 
   render() {
@@ -89,16 +107,16 @@ class App extends Component {
               Login to Spotify
             </a>
           )}
-          {this.state.item && (
-            <Player
-              item={this.state.item}
-              is_playing={this.state.is_playing}
-              progress_ms={this.progress_ms}
-            />
-          )}
+       
         </header>
         <div className="container">
           <NewReleases />
+          <div className="second-row">
+          <Featured 
+            featured={this.state.featured} 
+            />
+            <Chart />
+          </div>
 
        
      
@@ -109,3 +127,14 @@ class App extends Component {
 }
 
 export default App;
+
+
+// {
+//   this.state.item && (
+//     <Player
+//       item={this.state.item}
+//       is_playing={this.state.is_playing}
+//       progress_ms={this.progress_ms}
+//     />
+//   )
+// }

@@ -40,3 +40,7 @@ button {
 .now-playing__img img {
   width: 80px
 }
+
+.second-row {
+  clear: both;
+}
