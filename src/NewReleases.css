@@ -15,7 +15,11 @@
 }
 
 .new-releases-container img {
-  width:200px;
+  width:100px;
+}
+
+.new-releases-container span {
+    font-size: 12px;
 }
 
 .slick-next, .slick-prev {
@@ -30,7 +34,8 @@
 }
 
 .promotion-container {
-    width: 35%;
+    width: 30%;
     float: left;   /* flex doesn't seem to work well with slick slider */
     border: 2px solid #000000;
+    margin-left: 35px
 }

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import * as $ from "jquery";
+
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import hash from "./hash";
 import Player from "./Player";
 import logo from "./logo.svg";
 import "./App.css";
-import NewSlider from './NewSlider'
+import NewSlider from './NewSlider';
+import NewReleases from "./NewReleases";
 
 class App extends Component {
   constructor() {
@@ -38,23 +39,38 @@ class App extends Component {
     }
   }
 
+  // getCurrentlyPlaying(token) {
+  //   // Make a call using the token
+  //   $.ajax({
+  //     url: "https://api.spotify.com/v1/me/player",
+  //     type: "GET",
+  //     beforeSend: (xhr) => {
+  //       xhr.setRequestHeader("Authorization", "Bearer " + token);
+  //     },
+  //     success: (data) => {
+  //       console.log("data", data);
+  //       this.setState({
+  //         item: data.item,
+  //         is_playing: data.is_playing,
+  //         progress_ms: data.progress_ms,
+  //       });
+  //     }
+  //   });
+  // }
   getCurrentlyPlaying(token) {
-    // Make a call using the token
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: (data) => {
-        console.log("data", data);
-        this.setState({
-          item: data.item,
+    fetch("https://api.spotify.com/v1/me/player", {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        item: data.item,
           is_playing: data.is_playing,
           progress_ms: data.progress_ms,
-        });
-      }
-    });
+      })
+    })
   }
 
   render() {
@@ -82,6 +98,7 @@ class App extends Component {
           )}
         </header>
         <div className="container">
+          <NewReleases />
 
        
      

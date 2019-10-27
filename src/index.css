@@ -16,7 +16,7 @@ code {
 /** Now Playing **/
 
 .now-playing__name {
-    font-size: 1.5em;
+    /* font-size: 1em; */
     margin-bottom: 0.2em;
 }
 
@@ -43,6 +43,7 @@ code {
 .now-playing__side {
     margin-left: 5%;
     width: 45%;
+    font-size: .8em;
 }
 
 /** Progress **/

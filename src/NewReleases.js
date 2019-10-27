@@ -32,23 +32,38 @@ class NewReleases extends Component {
         }
     }
 
-    getCurrentlyPlaying(token) {
-        // Make a call using the token
-        $.ajax({
-            url: "https://api.spotify.com/v1/browse/new-releases?limit=18",
-            type: "GET",
-            beforeSend: (xhr) => {
-                xhr.setRequestHeader("Authorization", "Bearer " + token);
-            },
-            success: (data) => {
-                console.log("data", data);
-                this.setState({
+    // getCurrentlyPlaying(token) {
+    //     // Make a call using the token
+    //     $.ajax({
+    //         url: "https://api.spotify.com/v1/browse/new-releases?limit=18",
+    //         type: "GET",
+    //         beforeSend: (xhr) => {
+    //             xhr.setRequestHeader("Authorization", "Bearer " + token);
+    //         },
+    //         success: (data) => {
+    //             console.log("data", data);
+    //             this.setState({
                     
-                    albums: data.albums.items,
-                    type: data.type,
-                });
+    //                 albums: data.albums.items,
+    //                 type: data.type,
+    //             });
+    //         }
+    //     });
+    // }
+
+    getCurrentlyPlaying(token) {
+        fetch("https://api.spotify.com/v1/browse/new-releases?limit=18", {
+            headers: {
+                'Authorization': 'Bearer ' + token
             }
-        });
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                albums: data.albums.items,
+                     type: data.type
+            })
+        })
     }
 
     render() {
@@ -59,10 +74,10 @@ class NewReleases extends Component {
 
         if (this.state.albums[1]) {
             renderInfo = (
-                <div>
-                <p>New {this.state.albums[1].album_type}</p>
-                <h3>{this.state.albums[1].name}</h3>
-                <h3>{this.state.albums[1].artists.map(n => n.name )}</h3>
+                <div className="promotions-content">
+                New {this.state.albums[1].album_type}<br/>
+                {this.state.albums[1].artists.map(n => n.name )}<br/>
+                {this.state.albums[1].name}
                 </div>
             )
         } else {

@@ -6,3 +6,7 @@
 .slick-slide img {
   margin: auto;
 }
+
+.image-top img {
+    width: 160px
+}

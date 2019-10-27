@@ -3,7 +3,9 @@
 }
 
 .main-wrapper {
-  margin: 20px;
+  /* margin: 20px; */
+  width: 1008px;
+  margin: 0 auto;
 }
 
 
@@ -31,3 +33,10 @@ button {
   background: blue
 }
 
+.player-wrapper {
+  display: flex;
+}
+
+.now-playing__img img {
+  width: 80px
+}
