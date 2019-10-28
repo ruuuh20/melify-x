@@ -8,8 +8,8 @@ const Featured = ({ featured }) => {
             {featured.map(f => (
                 <div className="div1"> 
                 <img src={f.images[0].url} />
-                {f.name}
-                {f.tracks.total}
+                {f.name}<br/>
+                {f.tracks.total} tracks
                 </div>
             ))}
            

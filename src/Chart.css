@@ -27,7 +27,7 @@ clear:both
 
 .chart .list-wrap li .rank_number {
   
-    float: left;
+    /* float: left; */
     width: 71px;
 }
 .chart .list-wrap li .rank_number .rank {
@@ -37,7 +37,7 @@ clear:both
     height: 13px;
     margin: 9px 0 0 5px;
    
-    font-size: 0;
+    /* font-size: 0; */
     line-height: 0;
     text-align: center;
     vertical-align: top;
@@ -64,3 +64,41 @@ clear:both
     border-width: 0 1px;
 }
 
+span.rank {
+    color: black;
+    font-size: 10px;
+}
+
+.rank-info {
+    width: 207px;
+padding-top: 2px;
+}
+
+.song {
+    float: left;
+width: 120px;
+overflow: hidden;
+font-size: 12px;
+line-height: 15px;
+text-overflow: ellipsis;
+white-space: nowrap;
+word-wrap: normal;
+}
+
+.artist {
+    float: left;
+width: 77px;
+margin-left: 1px;
+}
+
+.ellipsis {
+    display: block;
+overflow: hidden;
+float: left;
+max-width: 100%;
+font-size: 12px;
+line-height: 15px;
+text-overflow: ellipsis;
+white-space: nowrap;
+word-wrap: normal;
+}
