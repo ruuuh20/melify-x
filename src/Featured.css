@@ -4,5 +4,9 @@ grid-template-columns: repeat(3, 1fr);
 grid-template-rows: repeat(2, 1fr);
 grid-column-gap: 10px;
 grid-row-gap: 10px;
-width: 60%
+width: 70%
 } 
+
+.featured-wrapper img {
+    width: 200px;
+}

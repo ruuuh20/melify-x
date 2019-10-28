@@ -25,7 +25,8 @@ class App extends Component {
       },
       is_playing: "Paused",
       progress_ms: 0,
-      featured: []
+      featured: [],
+      chart: []
     };
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
   }
@@ -39,6 +40,7 @@ class App extends Component {
         token: _token
       });
       this.getCurrentlyPlaying(_token);
+      this.getTopTracks(_token)
     }
   }
 
@@ -60,36 +62,110 @@ class App extends Component {
   //     }
   //   });
   // }
+  getCurrentlyPlaying(token) {
+    fetch("https://api.spotify.com/v1/me/player", {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        item: data.item,
+          is_playing: data.is_playing,
+          progress_ms: data.progress_ms,
+      })
+    })
+  }
+
+  getTopTracks(token) {
+    fetch("https://api.spotify.com/v1/playlists/37i9dQZEVXbLRQDuF5jeBp/tracks?limit=10", {
+        headers: {
+          'authorization': 'Bearer ' + token
+        }
+      })
+      .then((response => response.json()))
+      .then(data => {
+        console.log(data)
+        this.setState({
+          chart: data.items
+        })
+      })
+
+  }
+
+
+
   // getCurrentlyPlaying(token) {
-  //   fetch("https://api.spotify.com/v1/me/player", {
+  //   Promise.all([
+      
+  //      fetch("https://api.spotify.com/v1/browse/featured-playlists?limit=6", {
+  //        headers: {
+  //          'authorization': 'Bearer ' + token
+  //        }
+  //      }),
+  //     fetch("https://api.spotify.com/v1/playlists/37i9dQZEVXbLRQDuF5jeBp/tracks?limit=10", {
+  //       headers: {
+  //         'authorization': 'Bearer ' + token
+  //       }
+  //     })
+  //       // .then(values => Promise.all(values.map(value => value.json()))) 
+  //       // should be an array
+  //       // .then(([fetchOne, fetchTwo]) => {
+  //       //   let dataMap = {}
+  //       //   let collection = [...fetchOne, ...fetchTwo]
+  //       //   console.log(collection)
+  //       // })
+  //     // .then(function(values) {
+  //     //   return values.json()
+  //     // })
+  //       .then((responses1, responses2) => {
+  //         // all responses are resolved successfully
+  //         for (let response of responses1) {
+  //           console.log(`${response.url}: ${response.status}`); // shows 200 for every url
+  //         }
+
+  //         return responses1;
+  //       })
+  //       // map array of responses into array of response.json() to read their content
+  //       .then(responses => Promise.all(responses.map(r => r.json())))
+      
+  //       // .then(data => {
+  //       //   data[0].json()
+  //       //   data[1].json()
+     
+  //       // })
+  //       .then((responseText) => {
+  //         console.log(responseText);
+
+  //       }).catch((err) => {
+  //         console.log(err);
+  //       })
+
+
+  //   ])
+  // }
+
+  // getCurrentlyPlaying(token) {
+  //   fetch("https://api.spotify.com/v1/playlists/37i9dQZEVXbLRQDuF5jeBp/tracks?limit=10", {
   //     headers: {
   //       'Authorization': 'Bearer ' + token
   //     }
   //   })
   //   .then(response => response.json())
   //   .then(data => {
-  //     this.setState({
-  //       item: data.item,
-  //         is_playing: data.is_playing,
-  //         progress_ms: data.progress_ms,
-  //     })
+  //     console.log(data)
   //   })
   // }
-
-  getCurrentlyPlaying(token) {
-  fetch("https://api.spotify.com/v1/browse/featured-playlists?limit=6", {
-    headers: {
-      'authorization': 'Bearer ' + token
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.playlists.items)
-    this.setState({
-      featured: data.playlists.items
-    })
-  })
-  }
+ 
+  // .then(response => response.json())
+  // .then(data => {
+  //   console.log(data.playlists.items)
+  //   this.setState({
+  //     featured: data.playlists.items
+  //   })
+  // })
+  // }
 
   render() {
 
@@ -115,7 +191,7 @@ class App extends Component {
           <Featured 
             featured={this.state.featured} 
             />
-            <Chart />
+            <Chart chart={this.state.chart} />
           </div>
 
        
