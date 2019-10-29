@@ -4,8 +4,9 @@ import './Featured.css'
 const Featured = ({ featured }) => {
 
     return (
-        <div className="featured-wrapper">
+        <div>
             <h4>Featured Playlists</h4>
+        <div className="featured-wrapper">
             {featured.map(f => (
                 <div className="div1"> 
                 <img src={f.images[0].url} />
@@ -17,6 +18,7 @@ const Featured = ({ featured }) => {
             ))}
            
             
+        </div>
         </div>
     )
 }

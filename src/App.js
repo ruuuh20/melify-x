@@ -2,10 +2,7 @@ import React, { Component } from "react";
 
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import hash from "./hash";
-import Player from "./Player";
-import logo from "./logo.svg";
 import "./App.css";
-import NewSlider from './NewSlider';
 import NewReleases from "./NewReleases";
 import Featured from './Featured';
 import Chart from './Chart';
@@ -45,7 +42,6 @@ class App extends Component {
     }
   }
 
-
   // getCurrentlyPlaying(token) {
   //   fetch("https://api.spotify.com/v1/me/player", {
   //     headers: {
@@ -77,8 +73,6 @@ class App extends Component {
       })
 
   }
-
-
 
   // getCurrentlyPlaying(token) {
   //   Promise.all([
@@ -150,7 +144,7 @@ class App extends Component {
     return (
       <div className="main-wrapper">
         <header className="app-header">
-          <Nav />
+          <Nav /><br/><br/><br/>
        
           {!this.state.token && (
             <a

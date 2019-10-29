@@ -40,18 +40,20 @@
 .second-row {
   clear: both;
   display: flex;
-  margin-top: 20em;
+  margin-top: 18em;
 }
 
 .btn {
-  color: #1a4139;
-  border: 1px solid #1a4139;
+  color: #03A696;
+  border: 1px solid #03A696;
   padding: 8px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .app-header {
   text-align: center;
-  min-height: 100vh;
+
+
   
 }

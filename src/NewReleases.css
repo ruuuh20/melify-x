@@ -19,7 +19,7 @@
 }
 
 .new-releases-container span {
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .slick-next, .slick-prev {
@@ -34,8 +34,32 @@
 }
 
 .promotion-container {
-    width: 30%;
+    text-align: center;
+    width: 27%;
     float: left;   /* flex doesn't seem to work well with slick slider */
-    border: 2px solid #000000;
-    margin-left: 35px
+    /* border: 2px solid #000000; */
+    margin-left: 55px;
+    opacity: .8;
+    font-size: 12px;
+}
+
+.promotions-content {
+
+}
+
+.content-bottom {
+    background: #000000;
+    color: #eeeeee;
+    width: 180px;
+    margin: 0 auto;
+}
+
+.third-column span {
+    font-size: 12px;
+    padding: 4px;
+    border: 2px solid #03A696;
+}
+
+.image-top img {
+    width: 180px
 }

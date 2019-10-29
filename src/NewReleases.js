@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { authEndpoint, clientId, redirectUri, scopes } from "./config";
+
 import hash from "./hash";
-import Player from "./Player";
-import logo from "./logo.svg";
 import "./App.css";
 import "./NewReleases.css";
 import NewSlider from './NewSlider'
@@ -31,25 +29,6 @@ class NewReleases extends Component {
         }
     }
 
-    // getCurrentlyPlaying(token) {
-    //     // Make a call using the token
-    //     $.ajax({
-    //         url: "https://api.spotify.com/v1/browse/new-releases?limit=18",
-    //         type: "GET",
-    //         beforeSend: (xhr) => {
-    //             xhr.setRequestHeader("Authorization", "Bearer " + token);
-    //         },
-    //         success: (data) => {
-    //             console.log("data", data);
-    //             this.setState({
-                    
-    //                 albums: data.albums.items,
-    //                 type: data.type,
-    //             });
-    //         }
-    //     });
-    // }
-
     getCurrentlyPlaying(token) {
         fetch("https://api.spotify.com/v1/browse/new-releases?limit=18", {
             headers: {
@@ -73,44 +52,45 @@ class NewReleases extends Component {
 
         if (this.state.albums[1]) {
             renderInfo = (
+                <div>
+                
                 <div className="promotions-content">
-                New {this.state.albums[1].album_type}<br/>
-                {this.state.albums[1].artists.map(n => n.name )}<br/>
-                {this.state.albums[1].name}
+                    This week: New {this.state.albums[1].album_type}<br/>
+                    {this.state.albums[1].artists.map(n => n.name )}<br/>
+                    {this.state.albums[1].name}
+                </div>
                 </div>
             )
         } else {
-            renderInfo = 'no'
+            renderInfo = null
         }
 
         return (
             <div className="first-row">
+                <h4>New Releases</h4>
 
                 <div className="new-releases-container">
-                    <NewSlider>      {this.state.albums.map(a => (
+                    <NewSlider> {this.state.albums.map(a => (
                         <div className="albums-grid">
-                            <img src={a.images[1].url}></img>
-
+                            <img src={a.images[1].url} alt="new-album-image"></img>
                             <span>{a.name}</span>
-
-
                         </div>
                     )
                     )}
                     </NewSlider>
                 </div>
+
                 <div className="promotion-container">
-                <div className="image-top">
-                        {this.state.albums[1] ? <img src={this.state.albums[1].images[1].url}></img> : 'no' }
-                    
-                </div>
-                <div className="content-bottom">
-                        {renderInfo}
-                 
-                    
-                    
-                </div>
-            </div>
+                    <div className="image-top">
+                            {this.state.albums[1] ? <img src={this.state.albums[1].images[1].url} alt="promotion image"></img> : null }
+                    </div>
+                    <div className="content-bottom">
+                            {renderInfo}
+                    </div>
+                 </div>
+                 <div className="third-column">
+                    <span>You are logged in.</span>
+                 </div>
               
 
             </div>
