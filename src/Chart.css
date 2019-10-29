@@ -19,7 +19,7 @@ clear:both
 .chart .list-wrap li {
     position: relative;
     width: 278px;
-    height: 33px;
+    /* height: 33px; */
     border-bottom: 1px solid #e9edef;
     
     line-height: 0;
@@ -78,7 +78,7 @@ padding-top: 2px;
     float: left;
 width: 120px;
 overflow: hidden;
-font-size: 12px;
+font-size: 10px;
 line-height: 15px;
 text-overflow: ellipsis;
 white-space: nowrap;
@@ -96,9 +96,30 @@ margin-left: 1px;
 overflow: hidden;
 float: left;
 max-width: 100%;
-font-size: 12px;
+font-size: 10px;
 line-height: 15px;
 text-overflow: ellipsis;
 white-space: nowrap;
 word-wrap: normal;
+}
+
+.thumbnail {
+    width: 18px
+}
+
+ul.striped-list > li {
+    border-bottom: 1px solid rgb(221,221,221);
+    padding: 6px;
+}
+
+ul.striped-list > li:nth-of-type(odd) {
+    background-color: #cff1db ;
+}
+
+ul.striped-list > li:last-child {
+    border-bottom: none;
+}
+
+.chart h5 {
+    text-align: center;
 }

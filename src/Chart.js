@@ -5,13 +5,15 @@ const Chart = (props) => {
     return (
         <div className="chart-wrapper">
             <div className="chart">
-                <div>Chart</div>
+                <h5>Top 10 Chart</h5>
                 <div className="">
                     <div className="list-wrap">
-                        <ul>
+                        <ul className="striped-list">
                             {props.chart.map((track, index) => (
                                 <li className="rank_item">
+                                   
                                     <div className="rank_number nth">
+                                        
                                         <span className="rank">{index + 1}</span>
                                     </div>
                                     <div className="rank_cntt">
@@ -23,6 +25,7 @@ const Chart = (props) => {
                                                 {track.track.artists[0].name}
                                                 </div>
                                             </div>
+                                            <div><img className="thumbnail" src={track.track.album.images[2].url}></img></div>
                                         </div>
 
                                     </div>

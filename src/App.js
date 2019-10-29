@@ -8,7 +8,8 @@ import "./App.css";
 import NewSlider from './NewSlider';
 import NewReleases from "./NewReleases";
 import Featured from './Featured';
-import Chart from './Chart'
+import Chart from './Chart';
+import Nav from './Nav'
 
 class App extends Component {
   constructor() {
@@ -62,21 +63,21 @@ class App extends Component {
   //     }
   //   });
   // }
-  getCurrentlyPlaying(token) {
-    fetch("https://api.spotify.com/v1/me/player", {
-      headers: {
-        'Authorization': 'Bearer ' + token
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        item: data.item,
-          is_playing: data.is_playing,
-          progress_ms: data.progress_ms,
-      })
-    })
-  }
+  // getCurrentlyPlaying(token) {
+  //   fetch("https://api.spotify.com/v1/me/player", {
+  //     headers: {
+  //       'Authorization': 'Bearer ' + token
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     this.setState({
+  //       item: data.item,
+  //         is_playing: data.is_playing,
+  //         progress_ms: data.progress_ms,
+  //     })
+  //   })
+  // }
 
   getTopTracks(token) {
     fetch("https://api.spotify.com/v1/playlists/37i9dQZEVXbLRQDuF5jeBp/tracks?limit=10", {
@@ -146,17 +147,20 @@ class App extends Component {
   //   ])
   // }
 
-  // getCurrentlyPlaying(token) {
-  //   fetch("https://api.spotify.com/v1/playlists/37i9dQZEVXbLRQDuF5jeBp/tracks?limit=10", {
-  //     headers: {
-  //       'Authorization': 'Bearer ' + token
-  //     }
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data)
-  //   })
-  // }
+  getCurrentlyPlaying(token) {
+    fetch("https://api.spotify.com/v1/browse/featured-playlists?limit=6", {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      this.setState({
+        featured: data.playlists.items
+      })
+    })
+  }
  
   // .then(response => response.json())
   // .then(data => {
@@ -172,6 +176,7 @@ class App extends Component {
     return (
       <div className="main-wrapper">
         <header className="App-header">
+          <Nav />
        
           {!this.state.token && (
             <a
