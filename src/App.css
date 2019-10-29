@@ -28,9 +28,6 @@
   padding: 40px;                                                          
 }
 
-button {
-  background: blue
-}
 
 .player-wrapper {
   display: flex;
@@ -43,4 +40,18 @@ button {
 .second-row {
   clear: both;
   display: flex;
+  margin-top: 20em;
+}
+
+.btn {
+  color: #1a4139;
+  border: 1px solid #1a4139;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.app-header {
+  text-align: center;
+  min-height: 100vh;
+  
 }

@@ -45,24 +45,7 @@ class App extends Component {
     }
   }
 
-  // getCurrentlyPlaying(token) {
-  //   // Make a call using the token
-  //   $.ajax({
-  //     url: "https://api.spotify.com/v1/me/player",
-  //     type: "GET",
-  //     beforeSend: (xhr) => {
-  //       xhr.setRequestHeader("Authorization", "Bearer " + token);
-  //     },
-  //     success: (data) => {
-  //       console.log("data", data);
-  //       this.setState({
-  //         item: data.item,
-  //         is_playing: data.is_playing,
-  //         progress_ms: data.progress_ms,
-  //       });
-  //     }
-  //   });
-  // }
+
   // getCurrentlyPlaying(token) {
   //   fetch("https://api.spotify.com/v1/me/player", {
   //     headers: {
@@ -161,21 +144,12 @@ class App extends Component {
       })
     })
   }
- 
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log(data.playlists.items)
-  //   this.setState({
-  //     featured: data.playlists.items
-  //   })
-  // })
-  // }
 
   render() {
 
     return (
       <div className="main-wrapper">
-        <header className="App-header">
+        <header className="app-header">
           <Nav />
        
           {!this.state.token && (
@@ -199,8 +173,6 @@ class App extends Component {
             <Chart chart={this.state.chart} />
           </div>
 
-       
-     
         </div>
       </div>
     );

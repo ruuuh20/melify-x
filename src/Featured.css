@@ -4,9 +4,14 @@ grid-template-columns: repeat(3, 1fr);
 grid-template-rows: repeat(2, 1fr);
 grid-column-gap: 10px;
 grid-row-gap: 10px;
-width: 70%
+width: 70%;
+font-size: 10px;
 } 
 
 .featured-wrapper img {
-    width: 200px;
+    width: 180px;
+}
+
+.featured-wrapper h4 {
+    font-size: 14px;
 }
