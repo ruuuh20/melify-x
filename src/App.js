@@ -160,12 +160,14 @@ class App extends Component {
         </header>
         <div className="container">
           <NewReleases />
+            {this.state.token &&
           <div className="second-row">
-          <Featured 
-            featured={this.state.featured} 
-            />
-            <Chart chart={this.state.chart} />
-          </div>
+            
+              <Featured 
+                featured={this.state.featured} 
+                />
+            <Chart chart={this.state.chart} /> 
+            </div> }
 
         </div>
       </div>

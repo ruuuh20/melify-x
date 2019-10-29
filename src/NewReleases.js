@@ -67,13 +67,14 @@ class NewReleases extends Component {
 
         return (
             <div className="first-row">
-                <h4>New Releases</h4>
+                {this.state.token &&
+                <h4>New Releases</h4> }
 
                 <div className="new-releases-container">
                     <NewSlider> {this.state.albums.map(a => (
                         <div className="albums-grid">
                             <img src={a.images[1].url} alt="new-album-image"></img>
-                            <span>{a.name}</span>
+                            <span>{a.artists[0].name}</span>
                         </div>
                     )
                     )}
@@ -89,7 +90,8 @@ class NewReleases extends Component {
                     </div>
                  </div>
                  <div className="third-column">
-                    <span>You are logged in.</span>
+                    {this.state.token &&
+                    <span>You are logged in.</span>}
                  </div>
               
 

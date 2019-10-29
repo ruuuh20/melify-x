@@ -1,3 +1,13 @@
+Welcome to Melify - a web app that replicated the experience of Melon through Spotify. Melon.com is a resource that I use frequently to search, listen to, and find out about new releases for Korean music. All of the information can be easily found on the main page, such as new albums, trending artists, current top charts, and recommended playlists. Although each page on the menu provides details, I primarily only need to see the homepage and album pages to keep up with the current music industry. I wanted to create a similar experience using the Spotify API, with similar layouts and information.
+
+Some of the challenges included: 
+- Having to call to the API multiple times and authorizing each time, which can cause slow speeds and over abundance of data going around. On Melon's page, no authentication or login is needed unless the user wants to log in or play a track.
+- Limited amount of data compared to Melon: if possible I woud lke to explore how to gather additional data such as artist interviews, music videos, and more.
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
