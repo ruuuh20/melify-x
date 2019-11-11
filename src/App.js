@@ -176,14 +176,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// {
-//   this.state.item && (
-//     <Player
-//       item={this.state.item}
-//       is_playing={this.state.is_playing}
-//       progress_ms={this.progress_ms}
-//     />
-//   )
-// }
